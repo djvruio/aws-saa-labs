@@ -1,0 +1,35 @@
+AWSTemplateFormatVersion: 2010-09-09
+
+Resources:
+  MyTestLaunchTemplate:
+    Type: 'AWS::EC2::LaunchTemplate'
+    Properties:
+      LaunchTemplateName: !Sub '${AWS::StackName}-my-template-for-auto-scaling' 
+      LaunchTemplateData: 
+        ImageId: "ami-074cce78125f09d61" 
+        InstanceType: "t2.micro" 
+        KeyName: "KeyPairForEC2TestingInstances" 
+        SecurityGroupIds:  
+          - sg-a9ada4e2
+        TagSpecifications:  
+          - ResourceType: "instance" 
+            Tags:  
+              - Key: "Name"
+                Value: "myEC2Instance" 
+              - Key: "Owner" 
+                Value: "djvruio@gmail.com"
+  MyTestAutoScalingGroup:
+    Type: 'AWS::AutoScaling::AutoScalingGroup'
+    Properties:
+      AutoScalingGroupName: !Sub '${AWS::StackName}-my-first-asg'
+      AvailabilityZones:
+        - us-east-2a
+        - us-east-2b
+      DesiredCapacity: "1"
+      MaxSize: "1"
+      MinSize: "1"
+      LaunchTemplate:
+        LaunchTemplateId: !Ref MyTestLaunchTemplate
+        Version: !GetAtt MyTestLaunchTemplate.LatestVersionNumber
+    DependsOn:
+      - MyTestLaunchTemplate
