@@ -21,3 +21,7 @@ Circuit Breaker [Circuit Breaker Pattern](https://martinfowler.com/bliki/Circuit
 Bounded Context [Bounded Context Pattern](https://martinfowler.com/bliki/BoundedContext.html) article.
 
 Canary Release, please check [Canary Release Tecnique](https://martinfowler.com/bliki/CanaryRelease.html) article.
+
+## Terraform
+
+Terraform with AWS, please check [Get Started - AWS](https://learn.hashicorp.com/collections/terraform/aws-get-started).
