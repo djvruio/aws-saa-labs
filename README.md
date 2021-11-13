@@ -25,3 +25,10 @@ Canary Release, please check [Canary Release Tecnique](https://martinfowler.com/
 ## Terraform
 
 Terraform with AWS, please check [Get Started - AWS](https://learn.hashicorp.com/collections/terraform/aws-get-started).
+
+## EC2
+Review Amazon Linux 2 cpu info commands `cat /proc/cpuinfo` or `lscpu`
+
+Review Amazon Linux 2 OS info commands `cat /etc/os-release` or `uname -a`
+
+Connect EC2 instance via SSH in powershell `ssh -i 'path_to_pem_file.pem' ec2-user@ipv4_public_dns`
