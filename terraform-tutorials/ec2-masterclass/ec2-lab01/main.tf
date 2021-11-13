@@ -21,14 +21,26 @@ provider "aws" {
 }
 
 #         <type>         <local-name>
-resource "aws_instance" "dark_test_server" {
+resource "aws_instance" "linux_test_server" {
   
-  ami           = var.ami_id
-  instance_type = var.instance_type
+  ami           = var.ami_id_linux
+  instance_type = var.instance_type_linux
   key_name = "KeyPairForEC2TestingInstances"
 
   tags = {
-    Name = var.instance_name
+    Name = var.instance_name_linux
+    Owner = var.instance_owner
+  }
+}
+
+resource "aws_instance" "windows_test_server" {
+  
+  ami           = var.ami_id_windows
+  instance_type = var.instance_type_windows
+  key_name = "KeyPairForEC2TestingInstances"
+
+  tags = {
+    Name = var.instance_name_windows
     Owner = var.instance_owner
   }
 }

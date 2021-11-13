@@ -32,3 +32,8 @@ Review Amazon Linux 2 cpu info commands `cat /proc/cpuinfo` or `lscpu`
 Review Amazon Linux 2 OS info commands `cat /etc/os-release` or `uname -a`
 
 Connect EC2 instance via SSH in powershell `ssh -i 'path_to_pem_file.pem' ec2-user@ipv4_public_dns`
+
+### Steps to connect Windows Servers
+1. Associate instance to a Key Pair when create the instance.
+2. Authorize inbound traffic (`RDP TCP 3389 Custom 0.0.0.0/0`) in the security group for your Windows instances.
+3. Use RDP and decrypt the password for the `Administrator` user with the pem file.
