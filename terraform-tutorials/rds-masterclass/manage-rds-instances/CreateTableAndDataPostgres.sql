@@ -8,9 +8,9 @@ CREATE TABLE IF NOT EXISTS accounts (
 );
 
 INSERT INTO accounts(username,password, email, created_on, last_login)
-VALUES ('pepito', 'pasword01', 'pepito@pepito.com', '2013-06-01', '2013-06-01');
+VALUES ('pepita', 'pasword01', 'pepita@pepito.com', '2013-06-01', '2013-06-01');
 
 INSERT INTO accounts(username,password, email, created_on, last_login)
-VALUES ('rafita', 'pasword02', 'rafita@rafita.com', '2013-06-01', '2013-06-01');
+VALUES ('rafito', 'pasword02', 'rafito@rafita.com', '2013-06-01', '2013-06-01');
 
 SELECT * FROM accounts;

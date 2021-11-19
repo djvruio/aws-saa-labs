@@ -91,6 +91,8 @@ resource "aws_db_instance" "education" {
   instance_class         = "db.t3.micro"
   #allocated_storage      = 5
   allocated_storage      = 10
+  backup_retention_period = 1 # The days to retain backups for. Between 0 and 35.
+                              # Must be greater than 0 if the database is used as a source for a Read Replica.
   apply_immediately      = true
   engine                 = "postgres" 
   engine_version         = "13.1"
@@ -101,4 +103,23 @@ resource "aws_db_instance" "education" {
   parameter_group_name   = aws_db_parameter_group.education.name
   publicly_accessible    = true
   skip_final_snapshot    = true
+}
+
+# Provision a read replica
+resource "aws_db_instance" "education_replica" {
+  name                   = "education-replica"
+  identifier             = "education-replica"
+  instance_class         = "db.t3.micro"
+  replicate_source_db    = aws_db_instance.education.identifier
+  # backup_retention_period = 1
+  apply_immediately      = true
+  publicly_accessible    = true
+  skip_final_snapshot    = true
+  vpc_security_group_ids = [aws_security_group.rds.id]
+  parameter_group_name   = aws_db_parameter_group.education.name
+
+depends_on = [
+  aws_db_instance.education
+]
+
 }
